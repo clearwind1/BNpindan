@@ -43,8 +43,31 @@ var Main = (function (_super) {
      * Create a game scene
      */
     p.createGameScene = function () {
-        var sky = new GameUtil.MyBitmap(RES.getRes("bgImage"), this.stage.stageWidth / 2, this.stage.stageHeight / 2);
-        this.addChild(sky);
+        //var sky:GameUtil.MyBitmap = new GameUtil.MyBitmap(RES.getRes("bgImage"),this.stage.stageWidth/2,this.stage.stageHeight/2);
+        //this.addChild(sky);
+        document.title = '测试'; //改变网页标题
+        var sc = this.stage.stageHeight / GameUtil.GameConfig.DesignHeight;
+        console.log('sc=====', sc);
+        console.log('sche=====', this.stage.stageHeight);
+        for (var i = 0; i < 3; i++) {
+            var frame = new GameUtil.MyBitmap(RES.getRes('frame_png'), 160 * i, 0);
+            frame.setanchorOff(0, 0);
+            this.addChild(frame);
+        }
+        for (var i = 0; i < 3; i++) {
+            var frame = new GameUtil.MyBitmap(RES.getRes('frame_png'), 160 * i, this.stage.stageHeight);
+            frame.setanchorOff(0, 1);
+            this.addChild(frame);
+        }
+        var scroll = new GameUtil.ScrollView(GameUtil.GameConfig.DesignWidth, this.stage.stageHeight - 160);
+        scroll.y = 80;
+        this.addChild(scroll);
+        for (var i = 0; i < 5; i++) {
+            var item = new GameUtil.MyBitmap(RES.getRes('egretIcon'), GameUtil.GameConfig.DesignWidth / 2, 150 + i * 300);
+            scroll.putItem(item);
+        }
+        //console.log("scollheight======",scroll.height);
+        //alert("width===="+window.screen.availWidth+"\nheight====="+window.screen.availHeight);
     };
     return Main;
 })(egret.DisplayObjectContainer);

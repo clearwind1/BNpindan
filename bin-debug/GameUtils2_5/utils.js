@@ -15,6 +15,8 @@ var GameUtil;
         GameConfig.CrossLeft = 1; //从左往右
         GameConfig.TransAlpha = 2; //淡入淡出
         GameConfig.OpenDoor = 3; //开门方式
+        GameConfig.DesignWidth = 750;
+        GameConfig.DesignHeight = 1334;
         return GameConfig;
     })();
     GameUtil.GameConfig = GameConfig;
