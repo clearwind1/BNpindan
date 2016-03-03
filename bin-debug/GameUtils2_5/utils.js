@@ -6,8 +6,21 @@ var GameUtil;
     //游戏配置
     var GameConfig = (function () {
         function GameConfig() {
+            this.stagetY = 0;
         }
         var d = __define,c=GameConfig;p=c.prototype;
+        GameConfig._i = function () {
+            if (this._instance == null) {
+                this._instance = new GameUtil.GameConfig();
+            }
+            return this._instance;
+        };
+        p.setStageHeight = function (stagety) {
+            this.stagetY = stagety;
+        };
+        p.getSH = function () {
+            return this.stagetY;
+        };
         GameConfig.IP = "springmeeting.sxd55.com"; //http连接地址
         GameConfig.bRunFPS = false; //是否显示FPS
         //场景转换
@@ -17,6 +30,7 @@ var GameUtil;
         GameConfig.OpenDoor = 3; //开门方式
         GameConfig.DesignWidth = 750;
         GameConfig.DesignHeight = 1334;
+        GameConfig._instance = null;
         return GameConfig;
     })();
     GameUtil.GameConfig = GameConfig;
@@ -152,4 +166,8 @@ var GameUtil;
         return null;
     }
     GameUtil.getQueryString = getQueryString;
+    function setscreenY(y) {
+        return GameConfig._i().getSH() - (GameUtil.GameConfig.DesignHeight - y);
+    }
+    GameUtil.setscreenY = setscreenY;
 })(GameUtil || (GameUtil = {}));

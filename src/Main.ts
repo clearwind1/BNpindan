@@ -52,37 +52,8 @@ class Main extends egret.DisplayObjectContainer {
      */
     private createGameScene():void {
 
-        //var sky:GameUtil.MyBitmap = new GameUtil.MyBitmap(RES.getRes("bgImage"),this.stage.stageWidth/2,this.stage.stageHeight/2);
-        //this.addChild(sky);
-
-        document.title = '测试';          //改变网页标题
-
-        var sc: number = this.stage.stageHeight/GameUtil.GameConfig.DesignHeight;
-        console.log('sc=====',sc);
-        console.log('sche=====',this.stage.stageHeight);
-        for(var i:number = 0;i < 3;i++){
-            var frame: GameUtil.MyBitmap = new GameUtil.MyBitmap(RES.getRes('frame_png'),160*i,0);
-            frame.setanchorOff(0,0);
-            this.addChild(frame);
-        }
-        for(var i:number = 0;i < 3;i++){
-            var frame: GameUtil.MyBitmap = new GameUtil.MyBitmap(RES.getRes('frame_png'),160*i,this.stage.stageHeight);
-            frame.setanchorOff(0,1);
-            this.addChild(frame);
-        }
-
-        var scroll: GameUtil.ScrollView = new GameUtil.ScrollView(GameUtil.GameConfig.DesignWidth,this.stage.stageHeight-160);
-        scroll.y = 80;
-        this.addChild(scroll);
-
-        for(var i:number = 0;i < 5;i++){
-            var item: GameUtil.MyBitmap = new GameUtil.MyBitmap(RES.getRes('egretIcon'),GameUtil.GameConfig.DesignWidth/2,150+i*300);
-            scroll.putItem(item);
-        }
-
-        //console.log("scollheight======",scroll.height);
-
-        //alert("width===="+window.screen.availWidth+"\nheight====="+window.screen.availHeight);
+        GameUtil.GameConfig._i().setStageHeight(this.stage.stageHeight);
+        GameUtil.GameScene.runscene(new HeadPage());
 
     }
 

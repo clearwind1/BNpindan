@@ -19,6 +19,32 @@ module GameUtil
         public static DesignWidth:number = 750;
         public static DesignHeight:number = 1334;
 
+        private stagetY: number = 0;
+
+        public constructor()
+        {
+
+        }
+
+        private static _instance: GameConfig = null;
+        public static _i(): GameConfig
+        {
+            if(this._instance == null){
+                this._instance = new GameUtil.GameConfig();
+            }
+
+            return this._instance;
+        }
+
+        public setStageHeight(stagety: number):void
+        {
+            this.stagetY = stagety;
+        }
+        public getSH():number
+        {
+            return this.stagetY;
+        }
+
     }
 
     /**
@@ -158,6 +184,10 @@ module GameUtil
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return decodeURI(r[2]); return null;
+    }
+
+    export function setscreenY(y:number):number{
+        return GameConfig._i().getSH() - (GameUtil.GameConfig.DesignHeight-y);
     }
 
 }

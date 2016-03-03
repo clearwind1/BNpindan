@@ -1,7 +1,7 @@
 {
 	"groups":[
 	{
-		"keys":"bgImage,egretIcon,loadingbar_png,frame_png",
+		"keys":"bgImage,egretIcon,loadingbar_png,frame_png,bottomrect_png,homepage_png,Myorder_png,Mypindan_png,produpic_png,discountframe_png",
 		"name":"preload"
 	}],
 	"resources":[
@@ -29,5 +29,35 @@
 		"name":"frame_png",
 		"type":"image",
 		"url":"assets/frame.png"
+	},
+	{
+		"name":"bottomrect_png",
+		"type":"image",
+		"url":"assets/bottomrect.png"
+	},
+	{
+		"name":"homepage_png",
+		"type":"image",
+		"url":"assets/homepage.png"
+	},
+	{
+		"name":"Myorder_png",
+		"type":"image",
+		"url":"assets/Myorder.png"
+	},
+	{
+		"name":"Mypindan_png",
+		"type":"image",
+		"url":"assets/Mypindan.png"
+	},
+	{
+		"name":"produpic_png",
+		"type":"image",
+		"url":"assets/produpic.png"
+	},
+	{
+		"name":"discountframe_png",
+		"type":"image",
+		"url":"assets/discountframe.png"
 	}]
 }

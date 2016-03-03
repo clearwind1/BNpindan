@@ -25,6 +25,7 @@ var game_file_list = [
 	"bin-debug/GameUtils2_5/TipsPanel.js",
 	"bin-debug/GameUtils2_5/WaitServerPanel.js",
 	"bin-debug/GameUtils2_5/utils.js",
+	"bin-debug/HeadPage.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
 	//----auto game_file_list end----
