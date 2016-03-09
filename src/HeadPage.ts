@@ -224,33 +224,69 @@ class HeadPage extends GameUtil.BassPanel
 
             this.mordertoptag = ordertag;
             this.morderCont.removeChildren();
+
+
+            var scroll: GameUtil.ScrollView = new GameUtil.ScrollView(GameUtil.GameConfig.DesignWidth,this.stage.stageHeight-99-82);
+            scroll.y = 82;
+            this.morderCont.addChild(scroll);
+
             if(ordertag == 0){
-                this.Myorder();
+                this.Myorder(scroll);
             }
             else if(ordertag == 1){
-                this.waitPayPage();
+                this.waitPayPage(scroll);
             }
             else if(ordertag == 2)
             {
-                this.waitGetPage();
+                this.waitGetPage(scroll);
             }
             else
             {
-                this.refundPage();
+                this.refundPage(scroll);
             }
         }
     }
 
-    //全部订单
-    private Myorder()
+    //我的订单
+    private Myorder(scroll: GameUtil.ScrollView)
     {
-        var scroll: GameUtil.ScrollView = new GameUtil.ScrollView(GameUtil.GameConfig.DesignWidth,this.stage.stageHeight-99-82);
-        scroll.y = 82;
-        this.morderCont.addChild(scroll);
+        for(var i:number = 0;i < 5;i++) {
+            var rdstate:number = Math.floor(Math.random() * 100) % 5;
+            this.Allorder(scroll,rdstate,i);
+        }
+    }
+    //待付款
+    private waitPayPage(scroll: GameUtil.ScrollView)
+    {
+        for(var i:number = 0;i < 5;i++) {
+            var rdstate:number = 0;
+            this.Allorder(scroll,rdstate,i);
+        }
+    }
+
+    //待收货
+    private waitGetPage(scroll: GameUtil.ScrollView)
+    {
+        for(var i:number = 0;i < 5;i++) {
+            var rdstate:number = 1;
+            this.Allorder(scroll,rdstate,i);
+        }
+    }
+
+    //退款
+    private refundPage(scroll: GameUtil.ScrollView)
+    {
+        for(var i:number = 0;i < 5;i++) {
+            var rdstate:number = 2+Math.floor(Math.random() * 100) % 2;
+            this.Allorder(scroll,rdstate,i);
+        }
+    }
+    //全部订单
+    private Allorder(scroll: GameUtil.ScrollView,rdstate: number,i: number)
+    {
 
         var heioff: number = 415;
         var orderstate:string[] = ['待付款','待收货','退款-退款成功','退款-退款中','已完成'];
-        for(var i:number = 0;i < 5;i++){
 
             var ordertime: GameUtil.MyTextField = new GameUtil.MyTextField(31,5+i*heioff,25,0,0);
             ordertime.fontFamily = '楷体';
@@ -292,7 +328,6 @@ class HeadPage extends GameUtil.BassPanel
             scroll.putItem(paytext);
 
             //订单状态
-            var rdstate: number = Math.floor(Math.random()*100)%5;
             var orderstatetext: GameUtil.MyTextField = new GameUtil.MyTextField(31,372+i*heioff,30,0);
             orderstatetext.fontFamily = '楷体';
             orderstatetext.textColor = 0xff0000;
@@ -327,7 +362,6 @@ class HeadPage extends GameUtil.BassPanel
                 scroll.putItem(showinfobtn);
             }
 
-        }
     }
 
     //去付款
@@ -351,33 +385,4 @@ class HeadPage extends GameUtil.BassPanel
 
     }
 
-    //待付款
-    private waitPayPage()
-    {
-        var scroll: GameUtil.ScrollView = new GameUtil.ScrollView(GameUtil.GameConfig.DesignWidth,this.stage.stageHeight-99-82);
-        scroll.y = 82;
-        this.morderCont.addChild(scroll);
-
-        var heioff: number = 415;
-    }
-
-    //待收货
-    private waitGetPage()
-    {
-        var scroll: GameUtil.ScrollView = new GameUtil.ScrollView(GameUtil.GameConfig.DesignWidth,this.stage.stageHeight-99-82);
-        scroll.y = 82;
-        this.morderCont.addChild(scroll);
-
-        var heioff: number = 415;
-    }
-
-    //退款
-    private refundPage()
-    {
-        var scroll: GameUtil.ScrollView = new GameUtil.ScrollView(GameUtil.GameConfig.DesignWidth,this.stage.stageHeight-99-82);
-        scroll.y = 82;
-        this.morderCont.addChild(scroll);
-
-        var heioff: number = 415;
-    }
 }

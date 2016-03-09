@@ -172,96 +172,121 @@ var HeadPage = (function (_super) {
             this.mordertopselect.x = 94 + ordertag * 189;
             this.mordertoptag = ordertag;
             this.morderCont.removeChildren();
+            var scroll = new GameUtil.ScrollView(GameUtil.GameConfig.DesignWidth, this.stage.stageHeight - 99 - 82);
+            scroll.y = 82;
+            this.morderCont.addChild(scroll);
             if (ordertag == 0) {
-                this.Myorder();
+                this.Myorder(scroll);
             }
             else if (ordertag == 1) {
-                this.waitPayPage();
+                this.waitPayPage(scroll);
             }
             else if (ordertag == 2) {
-                this.waitGetPage();
+                this.waitGetPage(scroll);
             }
             else {
-                this.refundPage();
+                this.refundPage(scroll);
             }
         }
     };
+    //我的订单
+    p.Myorder = function (scroll) {
+        for (var i = 0; i < 5; i++) {
+            var rdstate = Math.floor(Math.random() * 100) % 5;
+            this.Allorder(scroll, rdstate, i);
+        }
+    };
+    //待付款
+    p.waitPayPage = function (scroll) {
+        for (var i = 0; i < 5; i++) {
+            var rdstate = 0;
+            this.Allorder(scroll, rdstate, i);
+        }
+    };
+    //待收货
+    p.waitGetPage = function (scroll) {
+        for (var i = 0; i < 5; i++) {
+            var rdstate = 1;
+            this.Allorder(scroll, rdstate, i);
+        }
+    };
+    //退款
+    p.refundPage = function (scroll) {
+        for (var i = 0; i < 5; i++) {
+            var rdstate = 2 + Math.floor(Math.random() * 100) % 2;
+            this.Allorder(scroll, rdstate, i);
+        }
+    };
     //全部订单
-    p.Myorder = function () {
-        var scroll = new GameUtil.ScrollView(GameUtil.GameConfig.DesignWidth, this.stage.stageHeight - 99 - 82);
-        scroll.y = 82;
-        this.morderCont.addChild(scroll);
+    p.Allorder = function (scroll, rdstate, i) {
         var heioff = 415;
         var orderstate = ['待付款', '待收货', '退款-退款成功', '退款-退款中', '已完成'];
-        for (var i = 0; i < 5; i++) {
-            var ordertime = new GameUtil.MyTextField(31, 5 + i * heioff, 25, 0, 0);
-            ordertime.fontFamily = '楷体';
-            ordertime.textColor = 0x000000;
-            ordertime.setText('2016-01-03 09:21:35');
-            scroll.putItem(ordertime);
-            var item = new GameUtil.MyBitmap(RES.getRes('orderpropic_png'), GameUtil.GameConfig.DesignWidth / 2, 0);
-            item.$setY(item.$getHeight() / 2 + i * heioff + 28);
-            scroll.putItem(item);
-            //数量
-            var counttext = new GameUtil.MyTextField(310, 220 + i * heioff, 25, 0);
-            counttext.fontFamily = '楷体';
-            counttext.textColor = 0x000000;
-            counttext.setText('数量:1');
-            scroll.putItem(counttext);
-            //价格
-            var pricetext = new GameUtil.MyTextField(719, 220 + i * heioff, 25, 1);
-            pricetext.fontFamily = '楷体';
-            pricetext.textColor = 0x000000;
-            pricetext.setText('￥8.00/件');
-            scroll.putItem(pricetext);
-            //订单编号
-            var ordernumtext = new GameUtil.MyTextField(31, 307 + i * heioff, 25, 0);
-            ordernumtext.fontFamily = '楷体';
-            ordernumtext.textColor = 0x000000;
-            ordernumtext.setText('订单编号:20160103567896');
-            scroll.putItem(ordernumtext);
-            //实付
-            var paytext = new GameUtil.MyTextField(719, 307 + i * heioff, 30, 1);
-            paytext.fontFamily = '楷体';
-            paytext.setText('实付:￥8.00');
-            paytext.textFlow = [
-                { text: "实付:", style: { "textColor": 0x000000, "size": 25 } },
-                { text: "￥8.00", style: { "textColor": 0xff0000 } }
-            ];
-            scroll.putItem(paytext);
-            //订单状态
-            var rdstate = Math.floor(Math.random() * 100) % 5;
-            var orderstatetext = new GameUtil.MyTextField(31, 372 + i * heioff, 30, 0);
-            orderstatetext.fontFamily = '楷体';
-            orderstatetext.textColor = 0xff0000;
-            orderstatetext.setText(orderstate[rdstate]);
-            scroll.putItem(orderstatetext);
-            if (rdstate == 0) {
-                //去付款
-                var forpaybtn = new GameUtil.Menu(this, 'forpaybtn_png', 'forpaybtn_png', this.forpay);
-                forpaybtn.x = 450;
-                forpaybtn.y = 372 + i * heioff;
-                scroll.putItem(forpaybtn);
-                //取消订单
-                var cancelorderbtn = new GameUtil.Menu(this, 'cancelorderbtn_png', 'cancelorderbtn_png', this.cancelorder);
-                cancelorderbtn.x = 640;
-                cancelorderbtn.y = 372 + i * heioff;
-                scroll.putItem(cancelorderbtn);
-            }
-            else if (rdstate == 1) {
-                //确认收货
-                var msgetbtn = new GameUtil.Menu(this, 'msgetbtn_png', 'msgetbtn_png', this.makesureget);
-                msgetbtn.x = 640;
-                msgetbtn.y = 372 + i * heioff;
-                scroll.putItem(msgetbtn);
-            }
-            else {
-                //查看详情
-                var showinfobtn = new GameUtil.Menu(this, 'showinfobtn_png', 'showinfobtn_png', this.showinfo);
-                showinfobtn.x = 640;
-                showinfobtn.y = 372 + i * heioff;
-                scroll.putItem(showinfobtn);
-            }
+        var ordertime = new GameUtil.MyTextField(31, 5 + i * heioff, 25, 0, 0);
+        ordertime.fontFamily = '楷体';
+        ordertime.textColor = 0x000000;
+        ordertime.setText('2016-01-03 09:21:35');
+        scroll.putItem(ordertime);
+        var item = new GameUtil.MyBitmap(RES.getRes('orderpropic_png'), GameUtil.GameConfig.DesignWidth / 2, 0);
+        item.$setY(item.$getHeight() / 2 + i * heioff + 28);
+        scroll.putItem(item);
+        //数量
+        var counttext = new GameUtil.MyTextField(310, 220 + i * heioff, 25, 0);
+        counttext.fontFamily = '楷体';
+        counttext.textColor = 0x000000;
+        counttext.setText('数量:1');
+        scroll.putItem(counttext);
+        //价格
+        var pricetext = new GameUtil.MyTextField(719, 220 + i * heioff, 25, 1);
+        pricetext.fontFamily = '楷体';
+        pricetext.textColor = 0x000000;
+        pricetext.setText('￥8.00/件');
+        scroll.putItem(pricetext);
+        //订单编号
+        var ordernumtext = new GameUtil.MyTextField(31, 307 + i * heioff, 25, 0);
+        ordernumtext.fontFamily = '楷体';
+        ordernumtext.textColor = 0x000000;
+        ordernumtext.setText('订单编号:20160103567896');
+        scroll.putItem(ordernumtext);
+        //实付
+        var paytext = new GameUtil.MyTextField(719, 307 + i * heioff, 30, 1);
+        paytext.fontFamily = '楷体';
+        paytext.setText('实付:￥8.00');
+        paytext.textFlow = [
+            { text: "实付:", style: { "textColor": 0x000000, "size": 25 } },
+            { text: "￥8.00", style: { "textColor": 0xff0000 } }
+        ];
+        scroll.putItem(paytext);
+        //订单状态
+        var orderstatetext = new GameUtil.MyTextField(31, 372 + i * heioff, 30, 0);
+        orderstatetext.fontFamily = '楷体';
+        orderstatetext.textColor = 0xff0000;
+        orderstatetext.setText(orderstate[rdstate]);
+        scroll.putItem(orderstatetext);
+        if (rdstate == 0) {
+            //去付款
+            var forpaybtn = new GameUtil.Menu(this, 'forpaybtn_png', 'forpaybtn_png', this.forpay);
+            forpaybtn.x = 450;
+            forpaybtn.y = 372 + i * heioff;
+            scroll.putItem(forpaybtn);
+            //取消订单
+            var cancelorderbtn = new GameUtil.Menu(this, 'cancelorderbtn_png', 'cancelorderbtn_png', this.cancelorder);
+            cancelorderbtn.x = 640;
+            cancelorderbtn.y = 372 + i * heioff;
+            scroll.putItem(cancelorderbtn);
+        }
+        else if (rdstate == 1) {
+            //确认收货
+            var msgetbtn = new GameUtil.Menu(this, 'msgetbtn_png', 'msgetbtn_png', this.makesureget);
+            msgetbtn.x = 640;
+            msgetbtn.y = 372 + i * heioff;
+            scroll.putItem(msgetbtn);
+        }
+        else {
+            //查看详情
+            var showinfobtn = new GameUtil.Menu(this, 'showinfobtn_png', 'showinfobtn_png', this.showinfo);
+            showinfobtn.x = 640;
+            showinfobtn.y = 372 + i * heioff;
+            scroll.putItem(showinfobtn);
         }
     };
     //去付款
@@ -275,27 +300,6 @@ var HeadPage = (function (_super) {
     };
     //查看详情
     p.showinfo = function () {
-    };
-    //待付款
-    p.waitPayPage = function () {
-        var scroll = new GameUtil.ScrollView(GameUtil.GameConfig.DesignWidth, this.stage.stageHeight - 99 - 82);
-        scroll.y = 82;
-        this.morderCont.addChild(scroll);
-        var heioff = 415;
-    };
-    //待收货
-    p.waitGetPage = function () {
-        var scroll = new GameUtil.ScrollView(GameUtil.GameConfig.DesignWidth, this.stage.stageHeight - 99 - 82);
-        scroll.y = 82;
-        this.morderCont.addChild(scroll);
-        var heioff = 415;
-    };
-    //退款
-    p.refundPage = function () {
-        var scroll = new GameUtil.ScrollView(GameUtil.GameConfig.DesignWidth, this.stage.stageHeight - 99 - 82);
-        scroll.y = 82;
-        this.morderCont.addChild(scroll);
-        var heioff = 415;
     };
     return HeadPage;
 })(GameUtil.BassPanel);
