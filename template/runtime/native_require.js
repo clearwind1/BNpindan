@@ -8,9 +8,10 @@ var game_file_list = [
 	"libs/modules/game/game.native.js",
 	"libs/modules/tween/tween.js",
 	"libs/modules/res/res.js",
+	"bin-debug/GameUtils2_5/BassPanel.js",
+	"bin-debug/DescribePage.js",
 	"bin-debug/GameUtils2_5/MyBitmap.js",
 	"bin-debug/GameUtils2_5/Animation.js",
-	"bin-debug/GameUtils2_5/BassPanel.js",
 	"bin-debug/GameUtils2_5/GetImageByUrl.js",
 	"bin-debug/GameUtils2_5/GetResByany.js",
 	"bin-debug/GameUtils2_5/Http.js",
@@ -28,6 +29,7 @@ var game_file_list = [
 	"bin-debug/HeadPage.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
+	"bin-debug/pindaninfo.js",
 	//----auto game_file_list end----
 ];
 

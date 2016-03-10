@@ -66,7 +66,9 @@ var HeadPage = (function (_super) {
         this.mPageCont.addChild(scroll);
         var heioff = 630;
         for (var i = 0; i < 5; i++) {
-            var item = new GameUtil.MyBitmap(RES.getRes('produpic_png'), GameUtil.GameConfig.DesignWidth / 2, 309 + i * heioff);
+            var item = new GameUtil.Menu(this, 'produpic_png', 'produpic_png', this.gopindan);
+            item.x = GameUtil.GameConfig.DesignWidth / 2;
+            item.y = 309 + i * heioff; //new GameUtil.MyBitmap(RES.getRes('produpic_png'),GameUtil.GameConfig.DesignWidth/2,309+i*heioff);
             scroll.putItem(item);
             //目前拼单人数
             var curpetext = new GameUtil.MyTextField(32, 580 + i * heioff, 25, 0);
@@ -95,6 +97,9 @@ var HeadPage = (function (_super) {
             discounttext.textColor = 0xffffff;
             scroll.putItem(discounttext);
         }
+    };
+    p.gopindan = function () {
+        GameUtil.GameScene.runscene(new pindaninfo());
     };
     //我的拼单
     p.showmypindan = function () {

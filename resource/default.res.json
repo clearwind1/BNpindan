@@ -1,7 +1,7 @@
 {
 	"groups":[
 	{
-		"keys":"bgImage,egretIcon,loadingbar_png,frame_png,bottomrect_png,homepage_png,Myorder_png,Mypindan_png,produpic_png,discountframe_png,homepagedown_png,Myorderdown_png,Mypindandown_png,mypropic_png,pindansc_png,pindaninfobtn_png,orderinfobtn_png,pindanfa_png,pindaning_png,ordertopframe_png,ordertopselect_png,orderpropic_png,cancelorderbtn_png,forpaybtn_png,msgetbtn_png,showinfobtn_png",
+		"keys":"bgImage,egretIcon,loadingbar_png,frame_png,bottomrect_png,homepage_png,Myorder_png,Mypindan_png,produpic_png,discountframe_png,homepagedown_png,Myorderdown_png,Mypindandown_png,mypropic_png,pindansc_png,pindaninfobtn_png,orderinfobtn_png,pindanfa_png,pindaning_png,ordertopframe_png,ordertopselect_png,orderpropic_png,cancelorderbtn_png,forpaybtn_png,msgetbtn_png,showinfobtn_png,describepic_png,blackcircle_png,pindanfaqibtn_png,pindangoumaibtn_png,pindanprodu_png,pindanpropic_png,redcircle_png",
 		"name":"preload"
 	}],
 	"resources":[
@@ -139,5 +139,40 @@
 		"name":"showinfobtn_png",
 		"type":"image",
 		"url":"assets/showinfobtn.png"
+	},
+	{
+		"name":"describepic_png",
+		"type":"image",
+		"url":"assets/describepic.png"
+	},
+	{
+		"name":"blackcircle_png",
+		"type":"image",
+		"url":"assets/blackcircle.png"
+	},
+	{
+		"name":"pindanfaqibtn_png",
+		"type":"image",
+		"url":"assets/pindanfaqibtn.png"
+	},
+	{
+		"name":"pindangoumaibtn_png",
+		"type":"image",
+		"url":"assets/pindangoumaibtn.png"
+	},
+	{
+		"name":"pindanprodu_png",
+		"type":"image",
+		"url":"assets/pindanprodu.png"
+	},
+	{
+		"name":"pindanpropic_png",
+		"type":"image",
+		"url":"assets/pindanpropic.png"
+	},
+	{
+		"name":"redcircle_png",
+		"type":"image",
+		"url":"assets/redcircle.png"
 	}]
 }

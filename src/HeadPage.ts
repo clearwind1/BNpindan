@@ -88,7 +88,9 @@ class HeadPage extends GameUtil.BassPanel
 
         var heioff: number = 630;
         for(var i:number = 0;i < 5;i++){
-            var item: GameUtil.MyBitmap = new GameUtil.MyBitmap(RES.getRes('produpic_png'),GameUtil.GameConfig.DesignWidth/2,309+i*heioff);
+            var item: GameUtil.Menu = new GameUtil.Menu(this,'produpic_png','produpic_png',this.gopindan);
+            item.x = GameUtil.GameConfig.DesignWidth/2;
+            item.y = 309+i*heioff;//new GameUtil.MyBitmap(RES.getRes('produpic_png'),GameUtil.GameConfig.DesignWidth/2,309+i*heioff);
             scroll.putItem(item);
 
             //目前拼单人数
@@ -122,6 +124,11 @@ class HeadPage extends GameUtil.BassPanel
             scroll.putItem(discounttext);
 
         }
+    }
+
+    private gopindan()
+    {
+        GameUtil.GameScene.runscene(new pindaninfo());
     }
 
     //我的拼单
